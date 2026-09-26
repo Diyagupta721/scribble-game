@@ -156,6 +156,7 @@ scribble
 │           └── application.properties
 │
 ├── pom.xml
+├── Dockerfile
 └── README.md
 ```
 
@@ -175,8 +176,8 @@ Make sure the following are installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd scribble
+git clone https://github.com/Diyagupta721/scribble-game.git
+cd scribble-game
 ```
 
 ### 2. Run the Application
@@ -231,17 +232,33 @@ The main application configuration is located at:
 src/main/resources/application.properties
 ```
 
-The application currently uses port:
+The application uses port:
 
 ```text
-8080
+${PORT:8080}
 ```
+
+This allows the application to use port **8080 locally** while automatically using the port provided by the cloud hosting platform after deployment.
 
 The WebSocket endpoint is:
 
 ```text
 /ws-scribble
 ```
+
+---
+
+## 🐳 Docker Deployment
+
+The application includes a `Dockerfile` for containerized deployment.
+
+The Docker image:
+
+1. Builds the Spring Boot application using Maven and Java 17.
+2. Creates a lightweight Java 17 runtime image.
+3. Runs the generated Spring Boot JAR.
+
+The same Docker configuration is used for the cloud deployment.
 
 ---
 
@@ -261,12 +278,13 @@ This project demonstrates practical implementation of:
 * WebSocket reconnection handling
 * Frontend-to-backend event communication
 * Maven-based Java application builds
+* Docker-based deployment
 
 ---
 
 ## 📌 Project Status
 
-The core multiplayer game functionality is complete.
+The core multiplayer game functionality is complete and the application has been successfully deployed.
 
 Current functionality includes:
 
@@ -280,8 +298,9 @@ Current functionality includes:
 * Reconnection handling
 * Leave game functionality
 * Responsive game interface
+* Cloud deployment
 
-The application is currently being deployed for **cloud hosting and final cross-device testing**.
+The deployed application has been tested with multiple players and the core multiplayer functionality is working correctly.
 
 ---
 
@@ -290,7 +309,12 @@ The application is currently being deployed for **cloud hosting and final cross-
 The application is deployed as a **single Spring Boot application**, with the frontend served from the same application.
 
 **Live Game:**
-`<live-game-url-will-be-added-here>`
+
+https://scribble-game-6qat.onrender.com
+
+**GitHub Repository:**
+
+https://github.com/Diyagupta721/scribble-game
 
 ---
 
@@ -300,7 +324,7 @@ The application is deployed as a **single Spring Boot application**, with the fr
 
 Information Technology Student
 
-**GitHub:** `<your-github-profile-url>`
+**GitHub:** https://github.com/Diyagupta721
 
 ---
 
