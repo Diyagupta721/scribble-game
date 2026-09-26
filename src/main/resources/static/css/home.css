@@ -1,0 +1,1064 @@
+/* =========================================================
+   HOME PAGE
+   ========================================================= */
+
+.view-home {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding: 4.5rem 5vw 3rem;
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.bg-scene {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 0.14;
+  animation: float-shape 8s ease-in-out infinite;
+}
+
+.shape-coral {
+  width: 260px;
+  height: 260px;
+  background: var(--coral);
+  top: 4%;
+  left: -90px;
+}
+
+.shape-teal {
+  width: 220px;
+  height: 220px;
+  background: var(--teal);
+  right: -80px;
+  bottom: 15%;
+  animation-delay: 2s;
+}
+
+.shape-yellow {
+  width: 150px;
+  height: 150px;
+  background: var(--yellow);
+  left: 10%;
+  bottom: -70px;
+  animation-delay: 4s;
+}
+
+.shape-coral-small {
+  width: 100px;
+  height: 100px;
+  background: var(--coral);
+  right: 12%;
+  top: 10%;
+  animation-delay: 1s;
+}
+
+@keyframes float-shape {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-18px) rotate(5deg);
+  }
+}
+
+
+/* =========================================================
+   DECORATIVE DOODLES
+   ========================================================= */
+
+.floating-doodle {
+  position: absolute;
+  color: var(--chalk);
+  opacity: 0.28;
+  font-family: var(--font-display);
+  pointer-events: none;
+}
+
+.doodle-star {
+  top: 14%;
+  left: 7%;
+  font-size: 3rem;
+  transform: rotate(15deg);
+}
+
+.doodle-circle {
+  right: 7%;
+  top: 29%;
+  font-size: 5rem;
+  color: var(--coral);
+  transform: rotate(-15deg);
+}
+
+.doodle-spark {
+  right: 32%;
+  bottom: 10%;
+  font-size: 2.5rem;
+  color: var(--yellow);
+}
+
+.doodle-pencil {
+  left: 3%;
+  bottom: 28%;
+  font-size: 3rem;
+  transform: rotate(-25deg);
+}
+
+.background-line {
+  position: absolute;
+  width: 170px;
+  height: 45px;
+  border-top: 5px solid;
+  border-radius: 50%;
+  opacity: 0.18;
+}
+
+.line-one {
+  left: 2%;
+  top: 42%;
+  border-color: var(--teal);
+  transform: rotate(-12deg);
+}
+
+.line-two {
+  right: 2%;
+  bottom: 38%;
+  border-color: var(--coral);
+  transform: rotate(12deg);
+}
+
+
+/* =========================================================
+   MAIN HOME LAYOUT
+   ========================================================= */
+
+.home-layout {
+  position: relative;
+  z-index: 2;
+  max-width: 1180px;
+  margin: 0 auto;
+  min-height: 620px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+  align-items: center;
+  gap: 5rem;
+}
+
+
+/* =========================================================
+   LEFT CONTENT
+   ========================================================= */
+
+.home-content {
+  position: relative;
+  z-index: 3;
+}
+
+.home-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--canvas-cream);
+
+  margin-bottom: 1.5rem;
+}
+
+.brand-pencil {
+  color: var(--coral);
+  font-size: 1.45rem;
+  transform: rotate(-15deg);
+}
+
+
+.home-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 0.42rem 0.75rem;
+
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.055);
+
+  color: var(--chalk-dim);
+
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 1.3px;
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 12px var(--teal);
+}
+
+
+.home-title {
+  margin-top: 1.35rem;
+
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 7vw, 6.6rem);
+  line-height: 0.84;
+  letter-spacing: -2px;
+  font-weight: 800;
+
+  color: var(--canvas-cream);
+
+  text-shadow:
+    0 7px 0 rgba(0,0,0,0.2);
+}
+
+.home-title span {
+  color: var(--coral);
+  position: relative;
+}
+
+.home-title span::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: -8px;
+  bottom: -8px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--yellow);
+
+  transform: rotate(-2deg);
+  opacity: 0.9;
+}
+
+
+.home-description {
+  max-width: 470px;
+  margin-top: 1.7rem;
+
+  color: var(--chalk-dim);
+
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   HOME BUTTONS
+   ========================================================= */
+
+.home-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 2rem;
+  max-width: 430px;
+}
+
+.home-main-btn {
+  min-height: 56px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.85rem 1.15rem;
+
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.btn-arrow {
+  font-size: 1.25rem;
+  transition: transform 0.2s ease;
+}
+
+.home-main-btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+
+.home-howto-link {
+  margin-top: 1.1rem;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+
+  border: 0;
+  background: transparent;
+
+  color: var(--chalk);
+
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  cursor: pointer;
+  padding: 0.35rem 0;
+}
+
+.home-howto-link:hover {
+  color: var(--canvas-cream);
+}
+
+.howto-icon {
+  width: 22px;
+  height: 22px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--chalk-dim);
+  border-radius: 50%;
+
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+
+/* =========================================================
+   FEATURE STRIP
+   ========================================================= */
+
+.home-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.15rem;
+
+  margin-top: 2rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.42rem;
+
+  color: var(--chalk-dim);
+
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.feature-icon {
+  font-size: 1rem;
+}
+
+
+/* =========================================================
+   GAME PREVIEW
+   ========================================================= */
+
+.home-preview {
+  position: relative;
+  width: 100%;
+  max-width: 590px;
+  justify-self: end;
+  padding: 1.5rem;
+}
+
+.game-preview-card {
+  position: relative;
+  z-index: 2;
+
+  background: var(--canvas-cream);
+  border: 3px solid var(--ink-navy-deep);
+  border-radius: 18px;
+
+  padding: 1rem;
+
+  box-shadow:
+    10px 12px 0 rgba(0,0,0,0.25),
+    0 25px 60px rgba(0,0,0,0.2);
+
+  transform: rotate(1.2deg);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   PREVIEW HEADER
+   ========================================================= */
+
+.preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.35rem 0.25rem 0.75rem;
+}
+
+.preview-room {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  color: var(--ink-navy-deep);
+
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+
+  background: var(--coral);
+
+  box-shadow:
+    0 0 0 3px rgba(239, 91, 91, 0.14);
+}
+
+.preview-round {
+  padding: 0.32rem 0.55rem;
+
+  border-radius: 6px;
+
+  background: var(--ink-navy-deep);
+  color: var(--canvas-cream);
+
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+}
+
+
+/* =========================================================
+   PREVIEW INFO
+   ========================================================= */
+
+.preview-game-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.75rem 0.85rem;
+
+  background: #f0eadb;
+
+  border-radius: 10px 10px 0 0;
+}
+
+.preview-small-label {
+  display: block;
+
+  color: #817b6d;
+
+  font-family: var(--font-mono);
+  font-size: 0.53rem;
+  letter-spacing: 1px;
+
+  margin-bottom: 0.1rem;
+}
+
+.preview-game-info strong {
+  color: var(--ink-navy-deep);
+
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+.preview-timer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  color: var(--coral-dark);
+
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   FAKE CANVAS
+   ========================================================= */
+
+.preview-canvas {
+  position: relative;
+
+  height: 245px;
+
+  background: #fffdf7;
+
+  border-left: 1px solid #e6dfcf;
+  border-right: 1px solid #e6dfcf;
+
+  overflow: hidden;
+}
+
+.preview-canvas::before,
+.preview-canvas::after {
+  content: "";
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  border: 2px dashed rgba(27, 27, 58, 0.07);
+}
+
+.preview-canvas::before {
+  width: 150px;
+  height: 150px;
+
+  left: -55px;
+  top: 20px;
+}
+
+.preview-canvas::after {
+  width: 100px;
+  height: 100px;
+
+  right: -35px;
+  bottom: 15px;
+}
+
+.canvas-word {
+  position: absolute;
+
+  top: 14px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 6px;
+}
+
+.canvas-word span {
+  width: 13px;
+  height: 4px;
+
+  border-radius: 4px;
+
+  background: var(--ink-navy-deep);
+  opacity: 0.75;
+}
+
+.preview-drawing {
+  position: absolute;
+
+  width: 80%;
+  height: 80%;
+
+  left: 10%;
+  top: 14%;
+
+  overflow: visible;
+}
+
+.preview-pencil {
+  position: absolute;
+
+  right: 15px;
+  bottom: 12px;
+
+  font-size: 2rem;
+
+  color: var(--ink-navy-deep);
+
+  transform: rotate(-25deg);
+}
+
+
+/* =========================================================
+   PREVIEW BOTTOM
+   ========================================================= */
+
+.preview-bottom {
+  padding: 0.8rem;
+
+  background: #f0eadb;
+
+  border-radius: 0 0 10px 10px;
+}
+
+.preview-players {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.preview-player {
+  display: grid;
+  grid-template-columns: 30px 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 0.28rem 0.35rem;
+
+  border-radius: 7px;
+}
+
+.preview-player.artist {
+  background: rgba(239, 91, 91, 0.09);
+}
+
+.player-avatar {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  color: white;
+
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+.avatar-coral {
+  background: var(--coral);
+}
+
+.avatar-teal {
+  background: var(--teal);
+}
+
+.avatar-yellow {
+  background: #d7a92e;
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.player-info strong {
+  color: var(--ink-navy-deep);
+  font-size: 0.72rem;
+}
+
+.player-info span {
+  color: #8a8476;
+  font-size: 0.55rem;
+}
+
+.preview-player b {
+  color: var(--ink-navy-deep);
+
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+}
+
+.preview-chat {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+
+  margin-top: 0.65rem;
+  padding: 0.5rem 0.65rem;
+
+  border-radius: 7px;
+
+  background: var(--canvas-cream);
+
+  color: #777161;
+
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.chat-bubble {
+  font-size: 0.8rem;
+}
+
+
+/* =========================================================
+   FLOATING PREVIEW CARDS
+   ========================================================= */
+
+.floating-card {
+  position: absolute;
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+
+  padding: 0.65rem 0.8rem;
+
+  background: var(--canvas-cream);
+
+  border: 2px solid var(--ink-navy-deep);
+  border-radius: 10px;
+
+  box-shadow: 5px 6px 0 rgba(0,0,0,0.18);
+}
+
+.floating-card > span {
+  font-size: 1.25rem;
+}
+
+.floating-card div {
+  display: flex;
+  flex-direction: column;
+}
+
+.floating-card small,
+.floating-card-players small {
+  color: #7e7769;
+
+  font-family: var(--font-mono);
+  font-size: 0.48rem;
+  letter-spacing: 0.7px;
+}
+
+.floating-card strong {
+  color: var(--ink-navy-deep);
+
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+}
+
+.floating-card-score {
+  left: -10px;
+  top: 19%;
+
+  transform: rotate(-5deg);
+}
+
+.floating-card-players {
+  right: -5px;
+  bottom: 18%;
+
+  transform: rotate(5deg);
+}
+
+
+/* =========================================================
+   TAPE DECORATION
+   ========================================================= */
+
+.preview-tape {
+  position: absolute;
+  z-index: 5;
+
+  width: 90px;
+  height: 27px;
+
+  background: rgba(246, 211, 91, 0.72);
+
+  opacity: 0.8;
+}
+
+.tape-left {
+  left: 10%;
+  top: 4px;
+
+  transform: rotate(-8deg);
+}
+
+.tape-right {
+  right: 10%;
+  top: 1px;
+
+  transform: rotate(7deg);
+}
+
+
+/* =========================================================
+   MODAL OVERLAY
+   ========================================================= */
+
+.view-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1.25rem;
+
+  background: rgba(19, 18, 40, 0.78);
+
+  backdrop-filter: blur(5px);
+
+  animation: overlay-in 0.2s ease;
+}
+
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+.modal-card {
+  width: 100%;
+  max-width: 420px;
+
+  padding: 2.1rem 1.9rem 1.9rem;
+
+  position: relative;
+
+  animation: modal-in 0.25s cubic-bezier(.2,.9,.3,1.2);
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+.modal-close {
+  position: absolute;
+
+  top: 14px;
+  right: 14px;
+
+  background: #f1ede0;
+  color: var(--ink-navy-deep);
+
+  box-shadow: none;
+}
+
+.modal-close:hover {
+  background: var(--coral);
+  color: #fff;
+}
+
+
+.modal-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+
+  color: var(--coral-dark);
+
+  font-weight: 700;
+
+  margin-bottom: 0.3rem;
+}
+
+
+.modal-title {
+  font-size: 1.7rem;
+
+  margin-bottom: 1.4rem;
+
+  color: var(--ink-navy-deep);
+}
+
+
+.howto-list {
+  text-align: left;
+
+  padding-left: 1.2rem;
+
+  margin: 0 0 1.6rem;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.7rem;
+
+  color: var(--ink-navy-deep);
+
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.howto-list li::marker {
+  color: var(--coral);
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+  .home-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+
+    max-width: 720px;
+  }
+
+  .home-content {
+    text-align: center;
+  }
+
+  .home-brand,
+  .home-badge {
+    justify-content: center;
+  }
+
+  .home-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .home-actions {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .home-features {
+    justify-content: center;
+  }
+
+  .home-preview {
+    justify-self: center;
+  }
+}
+
+
+@media (max-width: 700px) {
+
+  .view-home {
+    padding: 3rem 1rem 2rem;
+  }
+
+  .home-layout {
+    min-height: auto;
+    gap: 2.5rem;
+  }
+
+  .home-title {
+    font-size: clamp(3.7rem, 16vw, 5rem);
+  }
+
+  .home-description {
+    font-size: 0.92rem;
+  }
+
+  .home-actions {
+    flex-direction: column;
+    max-width: 330px;
+  }
+
+  .home-main-btn {
+    width: 100%;
+  }
+
+  .home-preview {
+    padding: 0.8rem;
+  }
+
+  .game-preview-card {
+    transform: rotate(0deg);
+  }
+
+  .floating-card {
+    display: none;
+  }
+
+  .preview-canvas {
+    height: 205px;
+  }
+
+  .doodle-circle,
+  .doodle-pencil {
+    display: none;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .view-home {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+
+  .home-title {
+    font-size: 3.5rem;
+  }
+
+  .home-brand {
+    font-size: 0.95rem;
+  }
+
+  .home-description {
+    font-size: 0.86rem;
+  }
+
+  .home-features {
+    gap: 0.7rem;
+  }
+
+  .feature-item {
+    font-size: 0.7rem;
+  }
+
+  .game-preview-card {
+    padding: 0.65rem;
+  }
+
+  .preview-canvas {
+    height: 175px;
+  }
+
+  .preview-player {
+    grid-template-columns: 26px 1fr auto;
+  }
+
+  .player-avatar {
+    width: 25px;
+    height: 25px;
+  }
+
+  .preview-room {
+    font-size: 0.55rem;
+  }
+
+  .preview-round {
+    font-size: 0.5rem;
+  }
+
+  .modal-card {
+    padding: 1.7rem 1.3rem 1.5rem;
+  }
+}

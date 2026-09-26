@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Scribble — Lobby</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+          href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+          rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/lobby.css">
+</head>
+
+<body>
+
+<script>
+  // Debug logging is disabled for the production UI.
+  // Keep this function because lobby.js may still call it.
+  window.scribbleDebugLog = function () {};
+</script>
+
+
+<div class="bg-scene">
+
+  <div
+          class="bg-shape"
+          style="width:180px;height:180px;background:var(--teal);top:10%;left:80%;"
+  ></div>
+
+  <div
+          class="bg-shape"
+          style="width:140px;height:140px;background:var(--yellow);top:75%;left:5%;"
+  ></div>
+
+</div>
+
+
+<div id="toast-stack"></div>
+
+
+<div
+        class="page-loader"
+        id="page-loader"
+>
+  <div class="spinner"></div>
+</div>
+
+
+<main
+        class="lobby-wrap hidden"
+        id="lobby-wrap"
+>
+
+  <div class="card lobby-card">
+
+    <header class="lobby-header">
+
+      <div class="lobby-brand">
+        🎨 <span>SCRIBBLE</span>
+      </div>
+
+      <button
+              class="room-code-chip"
+              id="btn-copy-code"
+              title="Copy invite link"
+      >
+
+        <span
+                class="muted"
+                style="font-size:0.7rem;"
+        >
+          ROOM
+        </span>
+
+        <span
+                class="mono room-code-value"
+                id="room-code-value"
+        >
+          ------
+        </span>
+
+        <span
+                class="copy-icon"
+                aria-hidden="true"
+        >
+          ⧉
+        </span>
+
+      </button>
+
+    </header>
+
+
+    <p
+            class="lobby-status"
+            id="lobby-status"
+    >
+      Waiting for players…
+    </p>
+
+
+    <div
+            class="player-grid"
+            id="player-grid"
+    ></div>
+
+
+    <p
+            class="player-count"
+            id="player-count"
+    >
+      Players: 0 / 0
+    </p>
+
+
+    <div class="lobby-actions">
+
+      <button
+              class="btn btn-primary btn-block hidden"
+              id="btn-start-game"
+      >
+        Start Game
+      </button>
+
+      <p
+              class="waiting-note"
+              id="waiting-note"
+      >
+        Waiting for the host to start the game…
+      </p>
+
+      <button
+              class="btn btn-ghost btn-block"
+              id="btn-leave-lobby"
+      >
+        Leave Room
+      </button>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+
+<script src="js/websocket.js"></script>
+
+<script src="js/lobby.js"></script>
+
+</body>
+</html>

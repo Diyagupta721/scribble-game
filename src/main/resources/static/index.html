@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scribble — Draw, Guess, Compete</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+
+<!-- Decorative background -->
+<div class="bg-scene">
+    <div class="bg-shape shape-coral"></div>
+    <div class="bg-shape shape-teal"></div>
+    <div class="bg-shape shape-yellow"></div>
+    <div class="bg-shape shape-coral-small"></div>
+
+    <div class="floating-doodle doodle-star">✦</div>
+    <div class="floating-doodle doodle-circle">○</div>
+    <div class="floating-doodle doodle-spark">✧</div>
+    <div class="floating-doodle doodle-pencil">✎</div>
+
+    <div class="background-line line-one"></div>
+    <div class="background-line line-two"></div>
+</div>
+
+<div id="toast-stack"></div>
+
+
+<!-- =========================================================
+     HOME VIEW
+     ========================================================= -->
+<main id="view-home" class="view view-home">
+
+    <div class="home-layout">
+
+        <!-- LEFT SIDE -->
+        <section class="home-content">
+
+            <div class="home-brand">
+                <span class="brand-pencil">✎</span>
+                <span>SCRIBBLE</span>
+            </div>
+
+            <div class="home-badge">
+                <span class="badge-dot"></span>
+                REAL-TIME DRAWING GAME
+            </div>
+
+            <h1 class="home-title">
+                Draw it.
+                <br>
+                <span>Guess it.</span>
+                <br>
+                Win it.
+            </h1>
+
+            <p class="home-description">
+                Grab your friends, pick a room and see who can draw
+                the best clues — or guess them the fastest.
+            </p>
+
+            <div class="home-actions">
+
+                <button
+                        class="btn btn-primary home-main-btn"
+                        id="btn-open-create"
+                >
+                    <span>Create Game</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+
+                <button
+                        class="btn btn-teal home-main-btn"
+                        id="btn-open-join"
+                >
+                    <span>Join Game</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+
+            </div>
+
+            <button class="home-howto-link" id="btn-open-howto">
+                <span class="howto-icon">?</span>
+                How to Play
+            </button>
+
+            <div class="home-features">
+
+                <div class="feature-item">
+                    <span class="feature-icon">🎨</span>
+                    <span>Draw live</span>
+                </div>
+
+                <div class="feature-item">
+                    <span class="feature-icon">👥</span>
+                    <span>Play together</span>
+                </div>
+
+                <div class="feature-item">
+                    <span class="feature-icon">🏆</span>
+                    <span>Score points</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             RIGHT SIDE — VISUAL GAME PREVIEW
+             ===================================================== -->
+        <section class="home-preview" aria-hidden="true">
+
+            <div class="preview-tape tape-left"></div>
+            <div class="preview-tape tape-right"></div>
+
+            <div class="game-preview-card">
+
+                <!-- Preview header -->
+                <div class="preview-header">
+
+                    <div class="preview-room">
+                        <span class="live-dot"></span>
+                        ROOM X7K9P2
+                    </div>
+
+                    <div class="preview-round">
+                        ROUND 2 / 3
+                    </div>
+
+                </div>
+
+
+                <!-- Word / timer -->
+                <div class="preview-game-info">
+
+                    <div>
+            <span class="preview-small-label">
+              NOW DRAWING
+            </span>
+
+                        <strong>Maya</strong>
+                    </div>
+
+                    <div class="preview-timer">
+                        <span>⏱</span>
+                        42
+                    </div>
+
+                </div>
+
+
+                <!-- Fake canvas -->
+                <div class="preview-canvas">
+
+                    <div class="canvas-word">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <svg
+                            class="preview-drawing"
+                            viewBox="0 0 360 230"
+                    >
+
+                        <path
+                                d="M90 160
+                 C85 125 110 92 145 88
+                 C180 82 195 105 205 128
+                 C220 160 245 165 270 145
+                 C294 126 295 94 278 78"
+                                fill="none"
+                                stroke="var(--coral)"
+                                stroke-width="9"
+                                stroke-linecap="round"
+                        />
+
+                        <circle
+                                cx="145"
+                                cy="78"
+                                r="25"
+                                fill="none"
+                                stroke="var(--teal)"
+                                stroke-width="7"
+                        />
+
+                        <path
+                                d="M118 150 Q150 175 182 151"
+                                fill="none"
+                                stroke="var(--yellow)"
+                                stroke-width="7"
+                                stroke-linecap="round"
+                        />
+
+                        <path
+                                d="M265 72 L282 56 L299 72"
+                                fill="none"
+                                stroke="var(--ink-navy-deep)"
+                                stroke-width="6"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                        />
+
+                    </svg>
+
+                    <div class="preview-pencil">
+                        ✎
+                    </div>
+
+                </div>
+
+
+                <!-- Players -->
+                <div class="preview-bottom">
+
+                    <div class="preview-players">
+
+                        <div class="preview-player artist">
+
+                            <div class="player-avatar avatar-coral">
+                                M
+                            </div>
+
+                            <div class="player-info">
+                                <strong>Maya</strong>
+                                <span>Drawing</span>
+                            </div>
+
+                            <b>120</b>
+
+                        </div>
+
+
+                        <div class="preview-player">
+
+                            <div class="player-avatar avatar-teal">
+                                R
+                            </div>
+
+                            <div class="player-info">
+                                <strong>Rahul</strong>
+                                <span>Guessing</span>
+                            </div>
+
+                            <b>95</b>
+
+                        </div>
+
+
+                        <div class="preview-player">
+
+                            <div class="player-avatar avatar-yellow">
+                                A
+                            </div>
+
+                            <div class="player-info">
+                                <strong>Alex</strong>
+                                <span>Guessing</span>
+                            </div>
+
+                            <b>70</b>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="preview-chat">
+                        <span class="chat-bubble">💬</span>
+                        <span>Is it a...</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Decorative floating cards -->
+
+            <div class="floating-card floating-card-score">
+
+                <span>🏆</span>
+
+                <div>
+                    <small>TOP SCORE</small>
+                    <strong>120 pts</strong>
+                </div>
+
+            </div>
+
+
+            <div class="floating-card floating-card-players">
+
+                <span>👥</span>
+
+                <strong>3 / 8</strong>
+
+                <small>PLAYERS</small>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- =========================================================
+     CREATE GAME VIEW
+     ========================================================= -->
+<main id="view-create" class="view view-modal hidden">
+
+    <div class="paper-card modal-card">
+
+        <button
+                class="modal-close btn-icon"
+                data-close
+                aria-label="Close"
+        >
+            ✕
+        </button>
+
+        <p class="modal-eyebrow">
+            Set the stage
+        </p>
+
+        <h2 class="modal-title">
+            Create Game
+        </h2>
+
+        <form id="form-create" novalidate>
+
+            <div class="field">
+
+                <label for="create-name">
+                    Your Name
+                </label>
+
+                <input
+                        id="create-name"
+                        name="name"
+                        type="text"
+                        maxlength="16"
+                        placeholder="e.g. Diya"
+                        autocomplete="off"
+                        required
+                />
+
+                <div
+                        class="field-error"
+                        id="create-name-error"
+                ></div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="create-rounds">
+                    Number of Rounds
+                </label>
+
+                <select
+                        id="create-rounds"
+                        name="rounds"
+                >
+                    <option value="2">
+                        2 rounds
+                    </option>
+
+                    <option value="3" selected>
+                        3 rounds
+                    </option>
+
+                    <option value="5">
+                        5 rounds
+                    </option>
+
+                    <option value="8">
+                        8 rounds
+                    </option>
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="create-players">
+                    Max Players
+                </label>
+
+                <select
+                        id="create-players"
+                        name="players"
+                >
+                    <option value="4">
+                        Up to 4
+                    </option>
+
+                    <option value="6">
+                        Up to 6
+                    </option>
+
+                    <option value="8" selected>
+                        Up to 8
+                    </option>
+                </select>
+
+            </div>
+
+
+            <button
+                    type="submit"
+                    class="btn btn-primary btn-block"
+                    id="btn-create-submit"
+            >
+                Create Room
+            </button>
+
+        </form>
+
+    </div>
+
+</main>
+
+
+<!-- =========================================================
+     JOIN GAME VIEW
+     ========================================================= -->
+<main id="view-join" class="view view-modal hidden">
+
+    <div class="paper-card modal-card">
+
+        <button
+                class="modal-close btn-icon"
+                data-close
+                aria-label="Close"
+        >
+            ✕
+        </button>
+
+        <p class="modal-eyebrow">
+            Got a code?
+        </p>
+
+        <h2 class="modal-title">
+            Join Game
+        </h2>
+
+        <form id="form-join" novalidate>
+
+            <div class="field">
+
+                <label for="join-name">
+                    Your Name
+                </label>
+
+                <input
+                        id="join-name"
+                        name="name"
+                        type="text"
+                        maxlength="16"
+                        placeholder="e.g. Rahul"
+                        autocomplete="off"
+                        required
+                />
+
+                <div
+                        class="field-error"
+                        id="join-name-error"
+                ></div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="join-code">
+                    Room Code
+                </label>
+
+                <input
+                        id="join-code"
+                        name="code"
+                        type="text"
+                        maxlength="6"
+                        placeholder="X7K9P2"
+                        autocomplete="off"
+                        style="text-transform:uppercase; letter-spacing:3px; font-family:var(--font-mono);"
+                        required
+                />
+
+                <div
+                        class="field-error"
+                        id="join-code-error"
+                ></div>
+
+            </div>
+
+
+            <button
+                    type="submit"
+                    class="btn btn-teal btn-block"
+                    id="btn-join-submit"
+            >
+                Join Game
+            </button>
+
+        </form>
+
+    </div>
+
+</main>
+
+
+<!-- =========================================================
+     HOW TO PLAY VIEW
+     ========================================================= -->
+<main id="view-howto" class="view view-modal hidden">
+
+    <div class="paper-card modal-card">
+
+        <button
+                class="modal-close btn-icon"
+                data-close
+                aria-label="Close"
+        >
+            ✕
+        </button>
+
+        <p class="modal-eyebrow">
+            Quick rules
+        </p>
+
+        <h2 class="modal-title">
+            How to Play
+        </h2>
+
+        <ol class="howto-list">
+
+            <li>
+                <strong>Take turns as the Artist.</strong>
+                Each round, one player gets a secret word and draws it.
+            </li>
+
+            <li>
+                <strong>Everyone else guesses</strong>
+                in the chat panel as fast as they can.
+            </li>
+
+            <li>
+                <strong>Faster correct guesses score more.</strong>
+                The artist earns points too when others guess right.
+            </li>
+
+            <li>
+                <strong>Rounds rotate</strong>
+                until everyone has been the artist for the chosen number of rounds.
+            </li>
+
+            <li>
+                <strong>Highest total score wins</strong>
+                when the game ends.
+            </li>
+
+        </ol>
+
+
+        <button
+                class="btn btn-primary btn-block"
+                data-close
+        >
+            Got it
+        </button>
+
+    </div>
+
+</main>
+
+
+<script src="js/websocket.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
